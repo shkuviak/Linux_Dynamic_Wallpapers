@@ -3,12 +3,11 @@ WALPAPER_DEST="/usr/share/backgrounds/Dynamic_Wallpapers"
 XML_DEST="/usr/share/gnome-background-properties/"
 GIT_URL="https://github.com/saint-13/Linux_Dynamic_Wallpapers.git/"
 
-cd ./Linux_Dynamic_Wallpapers
 # Clone .git folder -> Lightweigh checkout
 git clone --filter=blob:none --no-checkout "$GIT_URL"
 
 # List files in repo and create array of available walpapers
-walpaper_list="$(git ls-tree --full-name --name-only -r HEAD | \
+walpaper_list="$(git --git-dir Linux_Dynamic_Wallpapers/.git ls-tree --full-name --name-only -r HEAD | \
 	grep xml/ | \
 	sed -e 's/^xml\///' | \
 	sed -e 's/.xml//' | \
